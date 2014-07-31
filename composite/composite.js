@@ -195,11 +195,13 @@ function getPathTransformerProxy( name, mount, meta ) {
 function transformPath( mount, path ) {
 
 	// Prefix is optional, so we check for it
-	if( mount.prefix !== undefined ) {
+	if( mount.prefix ) {
 		var pfLen = mount.prefix.length;
 		if( path.substr( 0, pfLen ) == mount.prefix ) {
 			path = path.substr( pfLen );
 		}
+	} else {
+		path = path.substr( 1 );
 	}
 
 	// All mounts should have a root
